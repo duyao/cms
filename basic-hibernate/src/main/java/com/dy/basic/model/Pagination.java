@@ -19,12 +19,39 @@ public class Pagination<T> {
 	private int offset;
 	/**
 	 * 总页数
+	 * hibernate中count(*)返回值是long
 	 */
-	private int total;
+	private long total;
 	/**
 	 * 分页内容
 	 */
 	private List<T> data;
+	
+	
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
+	}
+	public int getOffset() {
+		return offset;
+	}
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
+	public long getTotal() {
+		return total;
+	}
+	public void setTotal(long total) {
+		this.total = total;
+	}
+	public List<T> getData() {
+		return data;
+	}
+	public void setData(List<T> data) {
+		this.data = data;
+	}
 	
 
 }

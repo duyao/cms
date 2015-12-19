@@ -108,11 +108,11 @@ public interface IBaseDao<T> {
 	 * @param args
 	 * @return
 	 */
-	public List<T> listBySql(String sql,Object[] args);
-	public List<T> listBySql(String sql,Object arg);
-	public List<T> listBySql(String sql);
-	public List<T> listBySql(String sql,Object[] args,Map<String, Object> alias);
-	public List<T> listBySql(String sql,Map<String, Object> alias);
+	public List<Object> listBySql(String sql,Object[] args,Class<T> clz,boolean hasEntity);
+	public List<Object> listBySql(String sql,Object arg,Class<T> clz,boolean hasEntity);
+	public List<Object> listBySql(String sql,Class<T> clz,boolean hasEntity);
+	public List<Object> listBySql(String sql,Object[] args,Map<String, Object> alias,Class<T> clz,boolean hasEntity);
+	public List<Object> listBySql(String sql,Map<String, Object> alias,Class<T> clz,boolean hasEntity);
 	
 	/**
 	 * 根据sql返回带分页结果
@@ -120,11 +120,11 @@ public interface IBaseDao<T> {
 	 * @param args
 	 * @return
 	 */
-	public Pagination<T> findBySql(String sql,Object[] args);
-	public Pagination<T> findBySql(String sql,Object arg);
-	public Pagination<T> findBySql(String sql);
-	public Pagination<T> findBySql(String sql,Object[] args,Map<String, Object> alias);
-	public Pagination<T> findBySql(String sql,Map<String, Object> alias);
+	public Pagination<Object> findBySql(String sql,Object[] args,Class<T> clz,boolean hasEntity);
+	public Pagination<Object> findBySql(String sql,Object arg,Class<T> clz,boolean hasEntity);
+	public Pagination<Object> findBySql(String sql,Class<T> clz,boolean hasEntity);
+	public Pagination<Object> findBySql(String sql,Object[] args,Map<String, Object> alias,Class<T> clz,boolean hasEntity);
+	public Pagination<Object> findBySql(String sql,Map<String, Object> alias,Class<T> clz,boolean hasEntity);
 	
 	
 }
