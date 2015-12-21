@@ -27,7 +27,7 @@
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- 对应寻找的包 -->
-		<property name="packagesToScan" value="com.dy.basic.model" />
+		<property name="packagesToScan" value="com.dy.test.basic.model" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
