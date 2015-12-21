@@ -1,6 +1,8 @@
 package com.dy.test.DbUnit;
 
 
+import java.util.List;
+
 import org.junit.Assert;
 
 import com.dy.test.basic.model.User;
@@ -11,6 +13,14 @@ public class EntityHelper {
 		Assert.assertNotNull(expected);
 		Assert.assertEquals(expected.getId(), actual.getId());
 		Assert.assertEquals(expected.getName(), actual.getName());
+	}
+	
+	public static void assertUser(List<User> expected,List<User> actuals) {
+		for(int i=0;i<expected.size();i++) {
+			User eu = expected.get(i);
+			User au = actuals.get(i);
+			assertUser(eu, au);
+		}
 	}
 	
 	public static void assertUser(User expected){

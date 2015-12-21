@@ -108,11 +108,11 @@ public interface IBaseDao<T> {
 	 * @param args
 	 * @return
 	 */
-	public List<Object> listBySql(String sql,Object[] args,Class<T> clz,boolean hasEntity);
-	public List<Object> listBySql(String sql,Object arg,Class<T> clz,boolean hasEntity);
-	public List<Object> listBySql(String sql,Class<T> clz,boolean hasEntity);
-	public List<Object> listBySql(String sql,Object[] args,Map<String, Object> alias,Class<T> clz,boolean hasEntity);
-	public List<Object> listBySql(String sql,Map<String, Object> alias,Class<T> clz,boolean hasEntity);
+	public <N extends Object>List<N> listBySql(String sql,Object[] args,Class<?> clz,boolean hasEntity);
+	public <N extends Object>List<N> listBySql(String sql,Object arg,Class<?> clz,boolean hasEntity);
+	public <N extends Object>List<N> listBySql(String sql,Class<?> clz,boolean hasEntity);
+	public <N extends Object>List<N> listBySql(String sql,Object[] args,Map<String, Object> alias,Class<?> clz,boolean hasEntity);
+	public <N extends Object>List<N> listBySql(String sql,Map<String, Object> alias,Class<?> clz,boolean hasEntity);
 	
 	/**
 	 * 根据sql返回带分页结果
@@ -120,11 +120,11 @@ public interface IBaseDao<T> {
 	 * @param args
 	 * @return
 	 */
-	public Pagination<Object> findBySql(String sql,Object[] args,Class<T> clz,boolean hasEntity);
-	public Pagination<Object> findBySql(String sql,Object arg,Class<T> clz,boolean hasEntity);
-	public Pagination<Object> findBySql(String sql,Class<T> clz,boolean hasEntity);
-	public Pagination<Object> findBySql(String sql,Object[] args,Map<String, Object> alias,Class<T> clz,boolean hasEntity);
-	public Pagination<Object> findBySql(String sql,Map<String, Object> alias,Class<T> clz,boolean hasEntity);
+	public <N extends Object>Pagination<N> findBySql(String sql,Object[] args,Class<?> clz,boolean hasEntity);
+	public <N extends Object>Pagination<N> findBySql(String sql,Object arg,Class<?> clz,boolean hasEntity);
+	public <N extends Object>Pagination<N> findBySql(String sql,Class<?> clz,boolean hasEntity);
+	public <N extends Object>Pagination<N> findBySql(String sql,Object[] args,Map<String, Object> alias,Class<?> clz,boolean hasEntity);
+	public <N extends Object>Pagination<N> findBySql(String sql,Map<String, Object> alias,Class<?> clz,boolean hasEntity);
 	
 	
 }
