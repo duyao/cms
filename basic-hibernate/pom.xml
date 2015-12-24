@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
 	<parent>
 		<groupId>com.dy.cms</groupId>
 		<artifactId>cms-parent</artifactId>
@@ -7,7 +8,7 @@
 		<relativePath>../cms-parent/pom.xml</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.dy</groupId>
+	<groupId>com.dy.basic</groupId>
 	<artifactId>basic-hibernate</artifactId>
 
 	<dependencies>
@@ -64,7 +65,6 @@
 		<dependency>
 			<groupId>com.github.springtestdbunit</groupId>
 			<artifactId>spring-test-dbunit</artifactId>
-			<version>1.2.1</version>
 		</dependency>
 
 		<dependency>
