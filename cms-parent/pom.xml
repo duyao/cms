@@ -15,9 +15,15 @@
 		<spring.version>4.2.4.RELEASE</spring.version>
 	</properties>
 
+	<modules>
+		<module>../cms-user</module>
+		<module>../cms-core</module>
+		<module>../basic-hibernate</module>
+	</modules>
+
 	<dependencyManagement>
 		<dependencies>
-			
+
 
 			<!-- 做校验 -->
 			<dependency>
@@ -35,6 +41,12 @@
 			<dependency>
 				<groupId>com.dy.basic</groupId>
 				<artifactId>basic-hibernate</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>cms-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
