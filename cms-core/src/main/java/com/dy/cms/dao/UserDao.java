@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.dy.basic.dao.BaseDao;
+import com.dy.basic.model.Pagination;
 import com.dy.cms.model.CmsException;
 import com.dy.cms.model.Group;
 import com.dy.cms.model.Role;
@@ -46,13 +47,14 @@ public class UserDao extends BaseDao<User> implements IUserDao {
 
 	@Override
 	public UserRole loadUserRole(int userId, int roleId) {
-		String hql = "select ur from UserRole ur where ur.user.id = ? and ur.role.id = ?";
+		String hql = "select ur from UserRole ur left join fetch ur.user u left join fetch ur.role r where u.id = ? and r.id = ?";
 		return (UserRole) this.getSession().createQuery(hql).setParameter(0, userId).setParameter(1, roleId).uniqueResult();
 	}
 
 	@Override
 	public UserGroup loadUserGroup(int userId, int groupId) {
-		String hql = "select ug from UserGroup ug where ur.user.id = ? and ur.group.id = ?";
+		//fetch抓取u和g，这样就使用一条语句获得结果
+		String hql = "select ug from UserGroup ug left join fetch ug.user u left join fecth ug.group g where u.id = ? and g.id = ?";
 		return (UserGroup) this.getSession().createQuery(hql).setParameter(0, userId).setParameter(1, groupId).uniqueResult();
 	}
 
@@ -90,7 +92,6 @@ public class UserDao extends BaseDao<User> implements IUserDao {
 			this.getSession().save(userRole);
 		}else{
 			new CmsException("用户角色已经存在，不能添加");
-			
 		}
 	}
 
@@ -107,7 +108,33 @@ public class UserDao extends BaseDao<User> implements IUserDao {
 		}
 	}
 
-	
+	@Override
+	public void deleteUserRole(Integer uid) {
+		String hql = "delete UserRole ur where ur.user.id = ?";
+		this.getSession().update(hql, uid);
+	}
+
+	@Override
+	public void deleteUserGroup(Integer uid) {
+		String hql = "delete UserGroup ug where ug.user.id = ?";
+		this.getSession().update(hql, uid);
+	}
+	@Override
+	public Pagination<User> findUser(){
+		return this.find("from user");
+	}
+
+	@Override
+	public void deleteUserGroup(Integer uid, Integer gid) {
+		String hql ="delete UserGroup ug where ug.user.id = ? and ug.group.id = ?";
+		this.getSession().update(hql, new Object[]{uid, gid});
+	}
+
+	@Override
+	public void deleteUserRole(Integer uid, Integer rid) {
+		String hql ="delete UserRole ur where ur.user.id = ? and ur.group.id = ?";
+		this.getSession().update(hql, new Object[]{uid, rid});
+	}
 	
 
 }

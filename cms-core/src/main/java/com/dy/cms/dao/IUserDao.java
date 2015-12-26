@@ -87,6 +87,28 @@ public interface IUserDao extends IBaseDao<User> {
 	 * @param group
 	 */
 	public void addUsergroup(User user, Group group);
-	
+	/**
+	 * 删除所有与该用户相关的用户角色
+	 * @param uid
+	 */
+	public void deleteUserRole(Integer uid);
+	/**
+	 * 删除所有与该用户相关的用户组
+	 * @param uid
+	 */
+	public void deleteUserGroup(Integer uid);
+	public Pagination<User> findUser();
+	/**
+	 * 根据uid和rid删除用户角色
+	 * @param uid
+	 * @param gid
+	 */
+	public void deleteUserGroup(Integer uid, Integer gid);
+	/**
+	 * 根据uid和gid删除用户组
+	 * @param uid
+	 * @param rid
+	 */
+	public void deleteUserRole(Integer uid,Integer rid);
 
 }
