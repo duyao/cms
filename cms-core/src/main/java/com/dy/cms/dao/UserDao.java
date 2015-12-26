@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.dy.basic.dao.BaseDao;
+import com.dy.cms.model.CmsException;
 import com.dy.cms.model.Group;
 import com.dy.cms.model.Role;
 import com.dy.cms.model.RoleType;
@@ -79,6 +80,34 @@ public class UserDao extends BaseDao<User> implements IUserDao {
 		return this.list(hql,gid);
 	}
 
+	@Override
+	public void addUserRole(User user, Role role) {
+		UserRole userRole = loadUserRole(user.getId(), role.getId());
+		if(userRole == null){
+			userRole = new UserRole();
+			userRole.setUser(user);
+			userRole.setUser(user);
+			this.getSession().save(userRole);
+		}else{
+			new CmsException("用户角色已经存在，不能添加");
+			
+		}
+	}
+
+	@Override
+	public void addUsergroup(User user, Group group) {
+		UserGroup userGroup = loadUserGroup(user.getId(), group.getId());
+		if(userGroup == null){
+			userGroup = new UserGroup();
+			userGroup.setGroup(group);
+			userGroup.setUser(user);
+			this.getSession().save(userGroup);
+		}else{
+			new CmsException("用户组已经存在，不能添加");
+		}
+	}
+
+	
 	
 
 }
